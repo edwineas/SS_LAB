@@ -7,5 +7,5 @@ This repository is to record SS_LAB
 | 1 | Sequential file allocation | [Link](Exp_1/) |
 | 2 | Indexed file allocation | [Link](exp_1/) |
 | 3 | Linked file allocation | [Link](exp_1/) |
-| 4 | Paging technique | [Link](exp_2.c/) |
+| 4 | Paging technique | [Link](https://github.com/edwineas/SS_LAB/blob/main/exp2.c) |
 | 5 | FCFS Disk Scheduling | [Link](Exp_1/) |
