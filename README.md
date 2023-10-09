@@ -14,3 +14,9 @@ This repository is to record SS_LAB
 | 8 | Page Replacement algorithms - FIFO | [Link](https://github.com/edwineas/SS_LAB/blob/main/exp4_1.c) |
 | 9 | Page Replacement algorithms - LRU | [Link](https://github.com/edwineas/SS_LAB/blob/main/exp4_2.c) |
 | 10 | Page Replacement algorithms - LFU | [Link](https://github.com/edwineas/SS_LAB/blob/main/exp4_3.c) |
+
+## CYCLE - 2
+|SI.no | Experiment Name | Code Link |
+|---|-----|----|
+| 1 | Assembler - pass1 | [Link](https://github.com/edwineas/SS_LAB/blob/main/exp5_1.c) |
+| 2 | Assembler - pass2 | [Link](https://github.com/edwineas/SS_LAB/blob/main/exp5_2.c) |
