@@ -25,7 +25,7 @@ void main() {
     printf("Length is: %d\n", b[x - 1]);
     printf("Blocks occupied:");
     for (i = 0; i < b[x - 1]; i++) {
-        printf("%4d", c[x - 1][i]);
+        printf("%d", c[x - 1][i]);
     }
     printf("\n");
 }
