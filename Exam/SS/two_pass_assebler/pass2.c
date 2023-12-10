@@ -88,7 +88,7 @@ int main()
     }
 
     fprintf(fp1, "%d\t%s\t%s\t%s\n", address, label, opcode, operand);
-    fprintf(fp4, "\nE^00%d", start);
+    fprintf(fp4, "\nE^00   %d", start);
 
     fclose(fp4);
     fclose(fp3);
