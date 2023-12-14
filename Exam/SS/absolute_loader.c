@@ -1,62 +1,77 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-
-FILE *obj;
-
-char prog_name[10], record[100], locn[4], instr[2];
-
-int i, j, k=0, flag=0, rec_len, start, ind, new_loc;
-
-int main(){
-
-    printf("\nEnter the name of the program to be loaded: ");
-    scanf("%s", prog_name);
-
-    obj = fopen("obj1.txt", "r");
-    fscanf(obj, "%s", record);
-
-    for(i=0; i<strlen(prog_name); i++){
-        if(record[i+2] == prog_name[i]){
-            flag=0;
-        }
-        else{
-            flag=1;
-            break;
-        }
-    }
-
-
-    if (flag == 1){
-        printf("Invalid program name!\n");
-    }
-    else{
-        printf("Location\tObject Code\n");
-        while(record[0] != 'E'){
-            ind = 12;
-            if (record[0] == 'T'){
-
-                for (j=4, k=0; j<8, k<4; k++, j++){
-                    locn[k] = record[j];
-                }
-
-                    start = atoi(locn);
-                    new_loc = start;
-
-                while(record[ind] != '$'){
-                    if(record[ind] == '^'){
-                        ind++;
-                    }
-                    else{
-                        printf("00%d  \t   %c%c\n", new_loc, record[ind], record[ind+1]);
-                        ind +=2;
-                        new_loc += 1;
-                    }
-                }
-            }
-            fscanf(obj, "%s", record);
-        }
-    }
-
-    return 0;
+char input[10], label[10], ch2;
+int w = 0, start, length = 0, end, count = 0, k, taddr, address, i = 0;
+FILE *fp1, *fp2;
+void check();
+int main()
+{
+	fp1 = fopen("input.txt", "r");
+	fp2 = fopen("output.txt", "w");
+	fscanf(fp1, "%s", input);
+	while (strcmp(input, "E") != 0)
+	{
+		if (strcmp(input, "H") == 0)
+		{
+			fscanf(fp1, "%s %x %x %s", label, &start, &end, input);
+			address = start;
+		}
+		else if (strcmp(input, "T") == 0)
+		{
+			fscanf(fp1, "%x %x %s", &taddr, &length, input);
+			while(address<taddr)
+			{
+				fprintf(fp2, "xx");
+				check();
+			}
+			if (w==0){
+				fprintf(fp2, "\n\n%x\t\t", taddr);
+				w=1;
+			}
+			fprintf(fp2, "%c%c", input[0], input[1]);
+			check();
+			fprintf(fp2, "%c%c", input[2], input[3]);
+			check();
+			fprintf(fp2, "%c%c", input[4], input[5]);
+			check();
+			fscanf(fp1, "%s", input);
+		}
+		else
+		{
+			fprintf(fp2, "%c%c", input[0], input[1]);
+			check();
+			fprintf(fp2, "%c%c", input[2], input[3]);
+			check();
+			fprintf(fp2, "%c%c", input[4], input[5]);
+			check();
+			fscanf(fp1, "%s", input);
+		}
+	}
+	fclose(fp1);
+	fclose(fp2);
+	printf("\n\n The contents of output file:\n");
+	fp2 = fopen("output.txt", "r");
+	ch2 = fgetc(fp2);
+	while (ch2 != EOF)
+	{
+		printf("%c", ch2);
+		ch2 = fgetc(fp2);
+	}
+	fclose(fp2);
+}
+void check()
+{
+	count++;
+	address++;
+	if (count == 4)
+	{
+		fprintf(fp2, "  ");
+		i++;
+		if (i == 4)
+		{
+			fprintf(fp2, "\n\n%x\t\t", address);
+			i = 0;
+		}
+		count = 0;
+	}
 }
