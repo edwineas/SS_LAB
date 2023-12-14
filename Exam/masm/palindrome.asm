@@ -6,7 +6,7 @@
     msg2 db 10,13,"string is a palindrome$"
     msg3 db 10,13,"string is not a palindrome$"
 
-.code
+.code 
         mov ax,@data
         mov ds,ax
         mov es,ax
@@ -49,7 +49,7 @@
 
     toend:mov ah,09
         int 21h
-        
+
         mov ah,4ch
         int 21h
 end
