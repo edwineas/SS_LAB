@@ -61,7 +61,7 @@ endm
       mov   al, [si]
       mov   ah, [di]
       cmp   ah, al
-      jz    l2
+      jz    l1
 
       lea   di, str2+2
       mov   bx, len2
@@ -74,28 +74,28 @@ endm
       jnz   up
       jz    last
 
-   l2:   
+   l1:   
       dec   bx
       inc   si
       inc   di
       cmp   bx, 0000
-      jz    l1
+      jz    l2
    
       dec   cx
       jnz   up
 
-   l1:   
+   l2:   
       lea   di, str3+2
       mov   bx, len3
 
-   l9:   
+   l3:   
       mov   dl, [di]
       mov   ah, 02h
       int   21h
       inc   di
       dec   bx
       cmp   bx, 0000
-      jnz   l9
+      jnz   l3
 
       lea   di, str2+2
       mov   bx, len2
