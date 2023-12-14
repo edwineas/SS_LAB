@@ -7,20 +7,20 @@ print macro msg
 endm
 
 .data
-   msg1 DB 10,13,'ENTER  THE STRING:$'
+   msg1 DB 10,13,'ENTER THE STRING:$'
    msg2 DB 10,13,'SUBSTRING TO BE REPLACED IS: $'
    msg3 DB 10,13,'REPLACE WITH:$'
    msg4 DB 10,13,'OUTPUT STRING IS: $'
    str1 DB 100,0,100 dup(0)
-   str2 DB 20,0,20 DUP(0)
-   str3 DB 20,0,20 DUP(0)
+   str2 DB 20,0,20 dup(0)
+   str3 DB 20,0,20 dup(0)
    len1 DW 0000H
    len2 DW 0000H
    len3 DW 0000H
 
 .code
    START:
-      mov   ax, DATA
+      mov   ax, @data
       mov   ds, ax
       mov   es, ax
 
@@ -29,6 +29,7 @@ endm
       lea   dx, str1
       mov   ah, 0ah
       int   21h
+      
       mov   al, [str1+1]
       mov   bx, offset len1
       mov   byte ptr [bx], al
